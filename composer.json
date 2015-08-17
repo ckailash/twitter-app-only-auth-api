@@ -1,0 +1,21 @@
+{
+  "name": "ckailash/twitter-app-only-auth",
+  "description": "Twitter Application Only Auth API for Laravel, which is documented here: https://dev.twitter.com/oauth/application-only. With Application-only authentication you don’t have the context of an authenticated user and this means that any request to API for endpoints that require user context, such as posting tweets, will not work. However, it comes with a higher API rate limit",
+  "keywords": ["twitter", "laravel", "application-only", "increase-twitter-api-limit"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Kailash Chandrasekaran",
+      "email": "mail@ckailash.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "themattharris/tmhoauth": "0.8.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ckailash\\TwitterAppOnlyAuth\\": "src/"
+    }
+  }
+}
