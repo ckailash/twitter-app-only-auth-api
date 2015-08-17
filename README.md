@@ -28,7 +28,7 @@ Now open up `/config/app.php` and add the service provider to your `providers` a
 
 Run `php artisan vendor:publish` and modify the config file with your own information.
 ```
-/config/ttwitter.php
+/config/twitter-app-only-auth-config.php
 ```
 
 Add the following to your .env file and you'll be on your way:
