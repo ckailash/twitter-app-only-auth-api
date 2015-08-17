@@ -23,13 +23,6 @@ Now open up `/config/app.php` and add the service provider to your `providers` a
 ]
 ```
 
-Now add the alias.
-```php
-'aliases' => [
-	'TwitterAppOnlyAuth' => 'Ckailash\TwitterAppOnlyAuth\Facades\TwitterAppOnlyAuth',
-]
-```
-
 
 ## Configuration
 
