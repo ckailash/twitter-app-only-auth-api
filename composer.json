@@ -17,5 +17,6 @@
     "psr-4": {
       "Ckailash\\TwitterAppOnlyAuth\\": "src/"
     }
-  }
+  },
+  "minimum-stability": "stable"
 }
