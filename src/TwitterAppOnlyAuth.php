@@ -18,9 +18,22 @@ class TwitterAppOnlyAuth extends tmhOAuth
 
 		$this->tConfig = $config;
 
-		if (!isset($this->tConfig['CONSUMER_KEY']) || !isset ($this->tConfig['CONSUMER_SECRET'])) {
-
+		if (is_array($config['twitter-app-only-auth-config::config']))
+		{
+			$this->tConfig = $config['twitter-app-only-auth-config::config'];
+		}
+		else if (is_array($config['twitter-app-only-auth-config']))
+		{
+			$this->tConfig = $config['twitter-app-only-auth-config'];
+		}
+		else
+		{
 			throw new Exception('No config found');
+		}
+
+		if (empty($this->tConfig['CONSUMER_KEY']) || empty($this->tConfig['CONSUMER_SECRET'])) {
+
+			throw new Exception('Config empty! Please check the package configuration file');
 
 		}
 
@@ -72,12 +85,16 @@ class TwitterAppOnlyAuth extends tmhOAuth
 
 		$url = parent::url($this->tConfig['API_VERSION'] . '/' . $name);
 
-		parent::apponly_request([
+		$queryParams = [
 			'method' => $reqMethod,
 			'host' => $name,
 			'url' => $url,
-			'parameters' => $params
-		]);
+			'params' => $params
+		];
+
+		\Log::info("qp = ".print_r($queryParams, true));
+
+		parent::apponly_request($queryParams);
 
 		$response = $this->response;
 
