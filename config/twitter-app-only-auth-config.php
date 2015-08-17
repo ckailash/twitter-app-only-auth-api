@@ -16,4 +16,5 @@ return [
 
 	'CONSUMER_KEY'        => env('T_CONSUMER_KEY', ''),
 	'CONSUMER_SECRET'     => env('T_CONSUMER_SECRET', ''),
+	'BEARER_TOKEN'        => env('T_BEARER_TOKEN', ''),
 ];

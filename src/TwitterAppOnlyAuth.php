@@ -18,22 +18,20 @@ class TwitterAppOnlyAuth extends tmhOAuth
 
 		$this->tConfig = $config;
 
-		if (is_array($config['twitter-app-only-auth-config::config']))
-		{
+		if (is_array($config['twitter-app-only-auth-config::config'])) {
 			$this->tConfig = $config['twitter-app-only-auth-config::config'];
-		}
-		else if (is_array($config['twitter-app-only-auth-config']))
-		{
+		} else if (is_array($config['twitter-app-only-auth-config'])) {
 			$this->tConfig = $config['twitter-app-only-auth-config'];
-		}
-		else
-		{
+		} else {
 			throw new Exception('No config found');
 		}
 
-		if (empty($this->tConfig['CONSUMER_KEY']) || empty($this->tConfig['CONSUMER_SECRET'])) {
+		if (empty($this->tConfig['CONSUMER_KEY'])
+			|| empty($this->tConfig['CONSUMER_SECRET'])
+			|| empty($this->tConfig['BEARER_TOKEN'])
+		) {
 
-			throw new Exception('Config empty! Please check the package configuration file');
+			throw new Exception('Some required config is empty! Please check the package configuration file');
 
 		}
 
@@ -42,6 +40,7 @@ class TwitterAppOnlyAuth extends tmhOAuth
 		$this->parentConfig = [];
 		$this->parentConfig['consumer_key'] = $this->tConfig['CONSUMER_KEY'];
 		$this->parentConfig['consumer_secret'] = $this->tConfig['CONSUMER_SECRET'];
+		$this->parentConfig['bearer'] = $this->tConfig['BEARER_TOKEN'];
 		$this->parentConfig['use_ssl'] = $this->tConfig['USE_SSL'];
 		$this->parentConfig['user_agent'] = "cktaoa " . parent::VERSION;
 
@@ -92,7 +91,7 @@ class TwitterAppOnlyAuth extends tmhOAuth
 			'params' => $params
 		];
 
-		\Log::info("qp = ".print_r($queryParams, true));
+		\Log::info("qp = " . print_r($queryParams, true));
 
 		parent::apponly_request($queryParams);
 
