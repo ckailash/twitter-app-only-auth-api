@@ -91,7 +91,7 @@ class TwitterAppOnlyAuth extends tmhOAuth
 			'params' => $params
 		];
 
-		\Log::info("qp = " . print_r($queryParams, true));
+		//\Log::info("qp = " . print_r($queryParams, true));
 
 		parent::apponly_request($queryParams);
 
@@ -100,7 +100,7 @@ class TwitterAppOnlyAuth extends tmhOAuth
 		$error = $response['error'];
 
 		if ($error) {
-			$this->log('ERROR_CODE : ' . $response['errorno']);
+			$this->log('ERROR_CODE : ' . $response['errno']);
 			$this->log('ERROR_MSG : ' . $response['error']);
 		}
 
